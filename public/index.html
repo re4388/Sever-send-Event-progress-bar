@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>SSE EventSource Example by Woolha</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../lib/loading-bar.min.css" />
+  <script type="text/javascript" src="../lib/loading-bar.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/event-source-polyfill/0.0.9/eventsource.min.js"></script>
+
+</head>
+
+<body>
+  <div class="start_button">
+    <button onclick="startTask();">Start</button>
+  </div>
+  <div id="myItem"></div>
+  <div id="myBar"></div>
+  <script>
+    var bar = new ldBar("#myBar");
+    bar.set(0);
+
+    function startTask() {
+      const es = new EventSource('http://localhost:3000/sse');
+      const listener = function (event) {
+        const type = event.type;
+        console.log(event);
+        if (event.data) {
+          let result = JSON.parse(event.data);
+          bar.set(result)
+        }
+
+        // window.console.log(`${type}: ${event.data || es.url}`);
+
+        if (type === 'result') {
+          es.close();
+        }
+      };
+      es.addEventListener('open', listener);
+      es.addEventListener('message', listener);
+      es.addEventListener('error', listener);
+      es.addEventListener('result', listener);
+    }
+  </script>
+</body>
+
+</html>
