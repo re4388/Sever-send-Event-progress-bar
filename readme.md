@@ -8,8 +8,8 @@
 
 ## How to run
 At root folder:
-`npm install`
-`node .\routes\index.js`
+1. `npm install`
+2. `node .\routes\index.js`
 
 ## Tutorial I learned from, most of the SSE code borrow form woolha.com.
 - [LoadingBar.js / Flexible JS Progress Bar Library](https://loading.io/progress/)
