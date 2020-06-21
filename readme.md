@@ -10,6 +10,7 @@
 At root folder:
 1. `npm install`
 2. `node .\routes\index.js`
+3. Browser goes to `http://localhost:3000/` and click start
 
 ## Tutorial I learned from, most of the SSE code borrow form woolha.com.
 - [LoadingBar.js / Flexible JS Progress Bar Library](https://loading.io/progress/)
